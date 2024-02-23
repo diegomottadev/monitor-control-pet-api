@@ -1,0 +1,16 @@
+ts-node:
+
+Es un ejecutor TypeScript para Node.js que te permite ejecutar archivos TypeScript directamente en Node.js sin necesidad de compilarlos previamente a JavaScript.
+Simplifica el proceso de desarrollo al eliminar la necesidad de compilar manualmente los archivos TypeScript antes de ejecutarlos en Node.js.
+Ayuda a ahorrar tiempo durante el desarrollo al eliminar el paso de compilación por separado.
+
+ts-node-dev:
+
+Es una herramienta que facilita el desarrollo de aplicaciones TypeScript en Node.js al reiniciar automáticamente la aplicación cuando detecta cambios en los archivos fuente.
+
+cross-env:
+
+"cross-env" es una herramienta que permite definir variables de entorno de forma independiente del sistema operativo en el que se ejecuta.
+Esto es especialmente útil en proyectos Node.js donde se pueden necesitar variables de entorno para configurar ciertas opciones de manera diferente en diferentes sistemas operativos (por ejemplo, ajustes de ruta o comportamientos específicos).
+Simplifica el proceso de definir variables de entorno en scripts de npm, ya que proporciona una sintaxis que es compatible con diferentes sistemas operativos.
+Por ejemplo, si tienes un script en tu archivo package.json que establece una variable de entorno de esta manera:
