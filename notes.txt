@@ -14,3 +14,7 @@ cross-env:
 Esto es especialmente útil en proyectos Node.js donde se pueden necesitar variables de entorno para configurar ciertas opciones de manera diferente en diferentes sistemas operativos (por ejemplo, ajustes de ruta o comportamientos específicos).
 Simplifica el proceso de definir variables de entorno en scripts de npm, ya que proporciona una sintaxis que es compatible con diferentes sistemas operativos.
 Por ejemplo, si tienes un script en tu archivo package.json que establece una variable de entorno de esta manera:
+
+usar base datos relacional con mysql
+
+npm install mysql2 sequelize reflect-metadata sequelize-typescript 
