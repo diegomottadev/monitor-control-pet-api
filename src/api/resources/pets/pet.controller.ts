@@ -1,28 +1,31 @@
 import { FindOptions, Transaction } from 'sequelize';
 import Pet from '../../../database/models/Pet';
 import Tracking from '../../../database/models/Tracking';
-// Función para iniciar una transacción
+
+// Function to start a transaction
 export const beginTransaction = async (): Promise<Transaction> => {
   if (!Pet.sequelize) {
     throw new Error('Sequelize instance is not available.');
   }
   return await Pet.sequelize.transaction();
 };
-// Función para confirmar una transacción
+
+// Function to commit a transaction
 export const commitTransaction = async (transaction: Transaction): Promise<boolean> => {
   try {
     await transaction.commit();
-    return true; // La transacción se confirmó exitosamente
+    return true; // Transaction was successfully committed
   } catch (error) {
     console.error('Error committing transaction:', error);
-    return false; // Hubo un error al confirmar la transacción
+    return false; // There was an error committing the transaction
   }
 };
 
-// Función para revertir una transacción
+// Function to rollback a transaction
 export const rollbackTransaction = async (transaction: Transaction): Promise<void> => {
   await transaction.rollback();
 };
+
 // Function to create a new pet
 export const createPet = async (petData: {
   name: string;
@@ -124,7 +127,6 @@ export const updatePet = async (
     throw new Error('Error updating the pet: ' + error.message);
   }
 };
-
 
 // Function to delete an existing pet
 export const deletePet = async (id: number, transaction?: Transaction): Promise<number> => {
