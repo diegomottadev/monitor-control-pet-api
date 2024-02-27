@@ -37,12 +37,11 @@ class Vaccine extends Model {
   })
   expirationDate?: Date;
 
-  @ForeignKey(() => Vaccine)
   @Column({
-    type: DataType.INTEGER,
+    type: DataType.DATEONLY,
     allowNull: true,
   })
-  nextVaccineId?: number;
+  nextVaccineDate?: Date;
 
   @BelongsTo(() => Vaccine, 'nextVaccineId')
   nextVaccine?: Vaccine;

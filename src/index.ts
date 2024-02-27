@@ -16,6 +16,7 @@ import permissionsRouter from './api/resources/permissions/permissions.route';
 import profileRouter from './api/resources/profile/profile.route';
 import { initializeDatabase } from './helpers/initializeDatabase';
 import petRouter from './api/resources/pets/pet.route';
+import vaccineRouter from './api/resources/vaccine/vaccine.route';
 
 const app: Express = express(); // Create an instance of the Express application
 
@@ -51,6 +52,7 @@ app.use('/roles', rolesRouter); // Route requests for role-related endpoints to 
 app.use('/permissions', permissionsRouter); // Route requests for permission-related endpoints to the permissionsRouter
 app.use('/profile', profileRouter); // Route requests for permission-related endpoints to the permissionsRouter
 app.use('/pets', petRouter); // Route requests for permission-related endpoints to the permissionsRouter
+app.use('/trackings', [vaccineRouter]); // Route requests for permission-related endpoints to the permissionsRouter
 
 app.use(procesarErrores); // Custom error handling middleware
 app.use(procesarErroresDeTamañoDeBody); // Custom error handling middleware
