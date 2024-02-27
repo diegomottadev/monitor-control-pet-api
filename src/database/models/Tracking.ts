@@ -28,12 +28,6 @@ class Tracking extends Model {
   @HasMany(() => Vaccine)
   vaccines?: Vaccine[];
 
-  @Column({
-    type: DataType.DATEONLY,
-    allowNull: false,
-  })
-  dateApplied!: Date;
-
   @Column(DataType.TEXT)
   notes?: string;
 

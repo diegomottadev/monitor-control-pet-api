@@ -6,6 +6,7 @@ import Tracking from "./Tracking";
   timestamps: true,
   paranoid: true,
   modelName: "Pet",
+  
 })
 class Pet extends Model {
 
@@ -28,8 +29,17 @@ class Pet extends Model {
   breed?: string;
 
   @Column({
-    type: DataType.DATEONLY,
+    type: DataType.DATE,
     allowNull: true,
+    get() {
+      const birthdate = this.getDataValue('birthdate');
+      // Verificar si appliedDate es una instancia de Date y si no está vacío
+      if (birthdate instanceof Date && !isNaN(birthdate.getTime())) {
+        // Convertir la fecha al formato 'dd/mm/yyyy'
+        return `${birthdate.getDate()}/${birthdate.getMonth() + 1}/${birthdate.getFullYear()}`;
+      }
+      return birthdate;
+    },
   })
   birthdate?: Date;
 
@@ -73,7 +83,7 @@ class Pet extends Model {
   @ForeignKey(() => Tracking)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
   })
   trackingId!: number;
 
