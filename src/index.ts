@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { Express,Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import logger from './api/resources/utils/logger';
@@ -17,6 +17,7 @@ import profileRouter from './api/resources/profile/profile.route';
 import { initializeDatabase } from './helpers/initializeDatabase';
 import petRouter from './api/resources/pets/pet.route';
 import vaccineRouter from './api/resources/vaccine/vaccine.route';
+import antiparasiticRouter from './api/resources/antiparasitic/antiparasatic.route';
 
 const app: Express = express(); // Create an instance of the Express application
 
@@ -52,8 +53,16 @@ app.use('/roles', rolesRouter); // Route requests for role-related endpoints to 
 app.use('/permissions', permissionsRouter); // Route requests for permission-related endpoints to the permissionsRouter
 app.use('/profile', profileRouter); // Route requests for permission-related endpoints to the permissionsRouter
 app.use('/pets', petRouter); // Route requests for permission-related endpoints to the permissionsRouter
-app.use('/trackings', [vaccineRouter]); // Route requests for permission-related endpoints to the permissionsRouter
+app.use('/trackings', [vaccineRouter,antiparasiticRouter]); // Route requests for permission-related endpoints to the permissionsRouter
 
+
+// Middleware para manejar las rutas no definidas
+
+// Middleware para manejar las rutas no definidas
+app.use((_req: Request, res: Response) => {
+  const error = new Error('Route not found') as any;
+  res.status(404).json({ message: error.message });
+});
 app.use(procesarErrores); // Custom error handling middleware
 app.use(procesarErroresDeTamañoDeBody); // Custom error handling middleware
 
