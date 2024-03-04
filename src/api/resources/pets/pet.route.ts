@@ -8,6 +8,7 @@ import { checkUserRolePermission } from "./../helpers/checkRolePermision.helper"
 import { Op } from "sequelize";
 import { Transaction } from "sequelize";
 import { PetNotExist } from "./pet.error";
+import Pet from "../../../database/models/Pet";
 
 const jwtAuthenticate = passport.authenticate("jwt", { session: false });
 
@@ -21,7 +22,7 @@ const handleUnknownError = (
 ) => {
   if (error instanceof PetNotExist) {
     log.warn(error.message);
-    res.status(404).json({ message: error.message });
+    res.status(error.status).json({ message: error.message });
   } else if (error instanceof Error) {
     log.error(`Error: ${error.message}`);
     res.status(500).json({ message: defaultMessage });
@@ -137,9 +138,11 @@ petRouter.put(
       isTransactionCommit = await petController.commitTransaction(transaction); // Commit transaction
 
       if (updatedPet) {
+
+        const fetchedUpdatedPet = await Pet.findOne({ where: { id } });
         res.json({
           message: `Pet with ID [${id}] has been successfully updated.`,
-          data: updatedPet,
+          data: fetchedUpdatedPet,
         });
         log.info(`Pet with ID [${id}] has been successfully updated.`);
       } else {

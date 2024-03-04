@@ -119,16 +119,17 @@ export const updateAntiparasitic = async (
       transaction: transaction, // Pass transaction to options
     });
 
-    if (updatedRowsCount > 0) {
-      const updatedAntiparasitic = await Antiparasitic.findByPk(id);
-      return updatedAntiparasitic;
-    } else {
-      return null; // Return null if the antiparasitic was not found or not updated
+    if (updatedRowsCount === 0) {
+      return null; // No rows were updated
     }
+
+    const updatedAntiparasitic = await Antiparasitic.findOne({ where: { id } });
+    return updatedAntiparasitic;
   } catch (error: any) {
     throw new Error("Error updating the antiparasitic: " + error.message);
   }
 };
+
 
 // Function to delete an existing antiparasitic
 export const deleteAntiparasitic = async (

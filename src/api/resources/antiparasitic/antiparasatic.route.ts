@@ -8,6 +8,7 @@ import { procesarErrores } from "../../libs/errorHandler";
 import { checkUserRolePermission } from "./../helpers/checkRolePermision.helper";
 import { AntiparasiticNotExist } from "./antiparasitic.error";
 import { validationAntiparasitic } from "./antiparasatic.validations";
+import Antiparasitic from "../../../database/models/Antiparasitic";
 
 const jwtAuthenticate = passport.authenticate("jwt", { session: false });
 
@@ -20,7 +21,7 @@ const handleUnknownError = (
 ) => {
   if (error instanceof AntiparasiticNotExist) {
     log.warn(error.message);
-    res.status(404).json({ message: error.message });
+    res.status(error.status).json({ message: error.message });
   } else if (error instanceof Error) {
     log.error(`Error: ${error.message}`);
     res.status(500).json({ message: defaultMessage });
@@ -145,9 +146,12 @@ antiparasiticRouter.put(
       );
 
       if (updatedAntiparasitic) {
+        // Buscar el registro actualizado después de que la transacción se haya confirmado
+        const fetchedUpdatedAntiparasitic = await Antiparasitic.findOne({ where: { id } });
+
         res.json({
           message: `Antiparasitic with ID [${id}] has been successfully updated.`,
-          data: updatedAntiparasitic,
+          data: fetchedUpdatedAntiparasitic,
         });
         log.info(`Antiparasitic with ID [${id}] has been successfully updated.`);
       } else {
@@ -165,6 +169,7 @@ antiparasiticRouter.put(
     }
   })
 );
+
 
 antiparasiticRouter.delete(
   "/:trackingId/antiparasitics/:id",

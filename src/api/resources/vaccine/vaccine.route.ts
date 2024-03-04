@@ -7,6 +7,7 @@ import { procesarErrores } from "../../libs/errorHandler";
 import { checkUserRolePermission } from "./../helpers/checkRolePermision.helper";
 import { VaccineNotExist } from "./vaccine.error";
 import { validationVaccine } from "./vaccine.validation";
+import Vaccine from "../../../database/models/Vaccine";
 
 const jwtAuthenticate = passport.authenticate("jwt", { session: false });
 
@@ -19,7 +20,7 @@ const handleUnknownError = (
 ) => {
   if (error instanceof VaccineNotExist) {
     log.warn(error.message);
-    res.status(404).json({ message: error.message });
+    res.status(error.status).json({ message: error.message });
   } else if (error instanceof Error) {
     log.error(`Error: ${error.message}`);
     res.status(500).json({ message: defaultMessage });
@@ -146,9 +147,10 @@ vaccineRouter.put(
       );
 
       if (updatedVaccine) {
+        const fetchedUpdatedVaccine = await Vaccine.findOne({ where: { id } });
         res.json({
           message: `Vaccine with ID [${id}] has been successfully updated.`,
-          data: updatedVaccine,
+          data: fetchedUpdatedVaccine,
         });
         log.info(`Vaccine with ID [${id}] has been successfully updated.`);
       } else {

@@ -51,7 +51,7 @@ usersRouter.post('/', [jwtAuthenticate,checkUserRolePermission('Create'),validat
   } catch (error) {
     if (error instanceof InfoUserInUse) {
       log.warn(`${error.message}: ${newUser.email} | ${newUser.name}`);
-      res.status(409).json({ message: error.message });
+      res.status(error.status).json({ message: error.message });
     } else {
       log.error(`Error creating the user with email [${newUser.email}] and name [${newUser.name}].`);
       res.status(500).json({ message: 'Error creating the user.' });
@@ -159,7 +159,7 @@ usersRouter.get('/:id', [jwtAuthenticate, checkUserRolePermission('Read')], proc
   } catch (error) {
     if (error instanceof UserNotExist) {
       log.warn(`${error.message}. User with ID [${id}] not found.`);
-      res.status(405).json({ message: error.message });
+      res.status(error.status).json({ message: error.message });
     } else {
       log.error(`Error retrieving user with ID [${id}].`);
       res.status(500).json({ message: 'Error retrieving user.' });
@@ -192,7 +192,7 @@ usersRouter.put('/:id', [jwtAuthenticate, checkUserRolePermission('Update')], pr
   } catch (error) {
     if (error instanceof UserNotExist) {
       log.warn(`${error.message}. User with ID [${id}] not found.`);
-      res.status(404).json({ message: error.message });
+      res.status(error.status).json({ message: error.message });
     } else {
       log.error(`Error updating user with ID [${id}].`);
       res.status(500).json({ message: 'Error updating user.' });
@@ -223,7 +223,7 @@ usersRouter.delete('/:id', [jwtAuthenticate, checkUserRolePermission('Delete')],
     // Handle the error
     if (error instanceof UserNotExist) {
       log.warn(`${error.message}. User with ID [${id}] not found.`);
-      res.status(404).json({ message: error.message });
+      res.status(error.status).json({ message: error.message });
     } else {
       log.error(`Error deleting user with ID [${id}].`);
       res.status(500).json({ message: 'Error deleting user.' });
