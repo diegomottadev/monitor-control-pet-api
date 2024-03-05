@@ -1,0 +1,909 @@
+{
+	"info": {
+		"_postman_id": "c537fafd-8b97-4221-b949-1dd1d49c20db",
+		"name": "Monitor Pet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21594008"
+	},
+	"item": [
+		{
+			"name": "vaccine",
+			"item": [
+				{
+					"name": "create vaccine",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MTMyMTg3LCJleHAiOjE3MDkyMTg1ODd9.fvzrd1YqHyLnePnwG2WoiXkBKvyca9w2jluT3dlxYbs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Rabies Vaccine\",\r\n  \"description\": \"Protects against rabies virus.\",\r\n  \"dateApplied\": \"2023-05-15\",\r\n  \"hasExpiration\": true,\r\n  \"expirationDate\": \"2023-11-15\",\r\n  \"nextVaccineDate\": \"2024-05-15\",\r\n  \"rememberNextVaccine\": true,\r\n  \"trackingId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/vaccines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"vaccines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update vaccine",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MDQxMDAyLCJleHAiOjE3MDkxMjc0MDJ9.uE2Sgbpu3-0mSUlw-MVX9IdZATJhllj6zdbDh_dr_-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Rabies Vaccine\",\r\n  \"description\": \"Protects against rabies virus.\",\r\n  \"dateApplied\": \"2023-05-15\",\r\n  \"hasExpiration\": true,\r\n  \"expirationDate\": \"2023-11-15\",\r\n  \"nextVaccineDate\": \"2024-05-15\",\r\n  \"rememberNextVaccine\": true,\r\n  \"trackingId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/vaccines/2/ada",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"vaccines",
+								"2",
+								"ada"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all vacine by tracking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MTMyMTg3LCJleHAiOjE3MDkyMTg1ODd9.fvzrd1YqHyLnePnwG2WoiXkBKvyca9w2jluT3dlxYbs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/vaccines",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"vaccines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one vaccine",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MTMyMTg3LCJleHAiOjE3MDkyMTg1ODd9.fvzrd1YqHyLnePnwG2WoiXkBKvyca9w2jluT3dlxYbs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/vaccines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"vaccines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy one vaccine",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MTMyMTg3LCJleHAiOjE3MDkyMTg1ODd9.fvzrd1YqHyLnePnwG2WoiXkBKvyca9w2jluT3dlxYbs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/vaccines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"vaccines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "antiparasitic",
+			"item": [
+				{
+					"name": "update antiparasitics",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Nombre del antiparasitario \",\r\n  \"type\": \"internal\", // o \"internal\", dependiendo del tipo de parásito\r\n  \"description\": \"Descripción opcional del antiparasitario\",\r\n  \"dateApplied\": \"2024-03-01\", // Fecha de aplicación del antiparasitario (formato: YYYY-MM-DD)\r\n  \"expirationDate\": \"2024-08-01\", // Fecha de expiración del antiparasitario (opcional) (formato: YYYY-MM-DD)\r\n  \"trackingId\": 1 // ID del seguimiento asociado al antiparasitario\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/antiparasitics/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"antiparasitics",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create antiparasitic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Nombre del antiparasitario 1\",\r\n  \"type\": \"external\", // o \"internal\", dependiendo del tipo de parásito\r\n  \"description\": \"Descripción opcional del antiparasitario\",\r\n  \"dateApplied\": \"2024-03-01\", // Fecha de aplicación del antiparasitario (formato: YYYY-MM-DD)\r\n  \"expirationDate\": \"2024-08-01\", // Fecha de expiración del antiparasitario (opcional) (formato: YYYY-MM-DD)\r\n  \"trackingId\": 1 // ID del seguimiento asociado al antiparasitario\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/antiparasitics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"antiparasitics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete antiparasitic",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "find antiparasitic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NTgwODU3LCJleHAiOjE3MDk2NjcyNTd9.881HFmnR-maT6ru97fgOtH533pkKqPD8uzEwykzEg5E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/vaccines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"vaccines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy antiparasitic",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NTgwODU3LCJleHAiOjE3MDk2NjcyNTd9.881HFmnR-maT6ru97fgOtH533pkKqPD8uzEwykzEg5E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/vaccines/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"vaccines",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "veterinarian",
+			"item": [
+				{
+					"name": "create veterinarian",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NTgwODU3LCJleHAiOjE3MDk2NjcyNTd9.881HFmnR-maT6ru97fgOtH533pkKqPD8uzEwykzEg5E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Dr. John Doe\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"phone\": \"+1234567890\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/veterinarians",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"veterinarians"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update veterinarian",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NTgwODU3LCJleHAiOjE3MDk2NjcyNTd9.881HFmnR-maT6ru97fgOtH533pkKqPD8uzEwykzEg5E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Dr. John Diego\",\r\n  \"email\": \"john.doe@example.com\",\r\n  \"phone\": \"+1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/veterinarians/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"veterinarians",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete veterinarian",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "find veterinarian",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NTgwODU3LCJleHAiOjE3MDk2NjcyNTd9.881HFmnR-maT6ru97fgOtH533pkKqPD8uzEwykzEg5E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/veterinarians/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"veterinarians",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all veterinarians",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/veterinarians",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"veterinarians"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "medical consultations",
+			"item": [
+				{
+					"name": "create medical consultation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"petId\": 1,\r\n  \"veterinarianId\": 1,\r\n  \"date\": \"2024-03-04T08:00:00Z\",\r\n  \"symptoms\": \"Lethargy, loss of appetite\",\r\n  \"treatment\": \"Prescribed antibiotics and rest\",\r\n  \"notes\": \"Follow up in one week\",\r\n  \"trackingId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/medicalConsultations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"medicalConsultations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update medical consultation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"petId\": 1,\r\n  \"veterinarianId\": 1,\r\n  \"date\": \"2024-03-04T08:00:00Z\",\r\n  \"symptoms\": \"Lethargy, loss of appetites\",\r\n  \"treatment\": \"Prescribed antibiotics and rest\",\r\n  \"notes\": \"Follow up in one week\",\r\n  \"trackingId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/medicalConsultations/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"medicalConsultations",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all medical consultations",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/medicalConsultations",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"medicalConsultations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete medical consultation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/medicalConsultations/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"medicalConsultations",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find medical consultation",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings/1/medicalConsultations/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings",
+								"1",
+								"medicalConsultations",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pets",
+			"item": [
+				{
+					"name": "create pet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MDQ2OTQxLCJleHAiOjE3MDkxMzMzNDF9.nsyJWAn2I2JZrJrIIJ9ttTYYhxb5VubhBsyTSERovW0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Fido\",\r\n  \"species\": \"Dog\",\r\n  \"breed\": \"Labrador Retriever\",\r\n  \"birthdate\": \"2019-05-15\",\r\n  \"size\": \"medium\",\r\n  \"gender\": \"male\",\r\n  \"color\": \"Golden\",\r\n  \"description\": \"Friendly and playful dog\",\r\n  \"weight\": 25,\r\n  \"isAdopted\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all pets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MDQxMDAyLCJleHAiOjE3MDkxMjc0MDJ9.uE2Sgbpu3-0mSUlw-MVX9IdZATJhllj6zdbDh_dr_-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pets?page=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pets"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update pet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MDQxMDAyLCJleHAiOjE3MDkxMjc0MDJ9.uE2Sgbpu3-0mSUlw-MVX9IdZATJhllj6zdbDh_dr_-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Santas\",\r\n  \"species\": \"Dog\",\r\n  \"breed\": \"Labrador Retriever\",\r\n  \"birthdate\": \"2019-05-15\",\r\n  \"size\": \"medium\",\r\n  \"gender\": \"male\",\r\n  \"color\": \"Golden\",\r\n  \"description\": \"Friendly and playful dog\",\r\n  \"weight\": 25,\r\n  \"isAdopted\": false\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/pets/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pets",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find pet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MDQxMDAyLCJleHAiOjE3MDkxMjc0MDJ9.uE2Sgbpu3-0mSUlw-MVX9IdZATJhllj6zdbDh_dr_-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pets/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pets",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "destroy pet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5MDQxMDAyLCJleHAiOjE3MDkxMjc0MDJ9.uE2Sgbpu3-0mSUlw-MVX9IdZATJhllj6zdbDh_dr_-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/pets/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"pets",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "trackings",
+			"item": [
+				{
+					"name": "all trackings",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzA5NjQ5NDQ4LCJleHAiOjE3MDk3MzU4NDh9.hUguMP6ZZbiyXkUC7AU-4FmXXjuPBzkmTgzH6FxQQEY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/trackings?page=1&name=Fido",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"trackings"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "name",
+									"value": "Fido"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find tracking",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

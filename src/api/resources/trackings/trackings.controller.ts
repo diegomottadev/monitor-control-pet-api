@@ -37,7 +37,7 @@ export const rollbackTransaction = async (
   await transaction.rollback();
 };
 
-// Function to get all medical consultations
+// Function to get all trackings
 export const getAllTrackings = async (
   page: number,
   pageSize: number,
@@ -51,7 +51,12 @@ export const getAllTrackings = async (
 if (name) {
     where[Op.or] = [
         { '$Pet.name$': { [Op.like]: `%${name}%` } },
-        Sequelize.literal(`EXISTS (SELECT 1 FROM MedicalConsultations mc INNER JOIN Veterinarians v ON mc.veterinarianId = v.id WHERE mc.trackingId = Tracking.id AND v.name LIKE '%${name}%')`)
+        Sequelize.literal(`
+          EXISTS (SELECT 1 FROM MedicalConsultations mc 
+          INNER JOIN Veterinarians v ON mc.veterinarianId = v.id 
+          WHERE mc.trackingId = Tracking.id 
+          AND v.name LIKE '%${name}%')
+        `)
     ];
 }
 
@@ -62,7 +67,7 @@ if (name) {
         {
             model: Pet,
             required: true,
-        }, // Incluir el modelo de Pet
+        }, 
         {
             model: MedicalConsultation,
             required: true,
