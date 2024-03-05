@@ -41,7 +41,7 @@ export const createVeterinarian = async (
     },
     transaction?: Transaction
   ): Promise<Veterinarian> => {
-    try {
+
       // Check if the name is unique
       const existingVeterinarian = await Veterinarian.findOne({ where: { name: veterinarianData.name } });
       if (existingVeterinarian) {
@@ -51,9 +51,7 @@ export const createVeterinarian = async (
       // Create the veterinarian
       const veterinarian = await Veterinarian.create(veterinarianData, { transaction });
       return veterinarian;
-    } catch (error: any) {
-      throw new Error("Error creating the veterinarian: " + error.message);
-    }
+
   };
 // Function to get all veterinarians
 export const getAllVeterinarians = async (
@@ -104,13 +102,13 @@ export const updateVeterinarian = async (
     },
     transaction?: Transaction
   ): Promise<Veterinarian | null> => {
-    try {
+
       const { name } = veterinarianData;
   
       // Check if there's another veterinarian with the same name excluding the current veterinarian
       const existingVeterinarian = await Veterinarian.findOne({ where: { name, id: { [Op.ne]: id } } });
       if (existingVeterinarian) {
-        throw new InfoVeterinarianInUse(`A veterinarian with the name '${name}' already exists.`);
+        throw new InfoVeterinarianInUse(`A veterinarian with the name [${name}] already exists.`);
       }
   
       const [updatedRowsCount] = await Veterinarian.update(veterinarianData, {
@@ -124,9 +122,6 @@ export const updateVeterinarian = async (
   
       const updatedVeterinarian = await Veterinarian.findOne({ where: { id } });
       return updatedVeterinarian;
-    } catch (error: any) {
-      throw new Error("Error updating the veterinarian: " + error.message);
-    }
   };
   
 

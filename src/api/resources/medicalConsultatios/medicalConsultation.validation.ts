@@ -9,7 +9,6 @@ import { Request, Response, NextFunction } from 'express';
 */
 
 const blueprintMedicalConsultations = Joi.object({
-  name: Joi.string().required(),
   description: Joi.any(),
   veterinarianId: Joi.number().integer().required(),
   petId: Joi.number().integer().required(),

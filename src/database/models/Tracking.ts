@@ -1,5 +1,5 @@
 // tracking.model.ts
-import { Table, Model, Column, DataType, ForeignKey, HasMany } from "sequelize-typescript";
+import { Table, Model, Column, DataType, ForeignKey, HasMany, BelongsTo } from "sequelize-typescript";
 import Pet from "./Pet";
 import Antiparasitic from "./Antiparasitic";
 import Vaccine from "./Vaccine";
@@ -18,14 +18,17 @@ class Tracking extends Model {
     allowNull: false,
   })
   petId!: number;
+  
+  @BelongsTo(() => Pet) 
+  pet?: Pet;
 
-  @HasMany(() => MedicalConsultation)
+  @HasMany(() => MedicalConsultation, 'trackingId')
   consultations?: MedicalConsultation[];
 
-  @HasMany(() => Antiparasitic)
+  @HasMany(() => Antiparasitic, 'trackingId')
   antiparasitics?: Antiparasitic[];
 
-  @HasMany(() => Vaccine)
+  @HasMany(() => Vaccine, 'trackingId')
   vaccines?: Vaccine[];
 
   @Column(DataType.TEXT)

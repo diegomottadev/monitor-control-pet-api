@@ -1,5 +1,6 @@
 // veterinarian.model.ts
-import { Table, Model, Column, DataType } from "sequelize-typescript";
+import { Table, Model, Column, DataType, HasMany } from "sequelize-typescript";
+import MedicalConsultation from "./MedicalConsultation";
 
 @Table({
   timestamps: true,
@@ -28,6 +29,9 @@ class Veterinarian extends Model {
 
   @Column(DataType.DATE)
   deletedAt?: Date;
+
+  @HasMany(() => MedicalConsultation, { foreignKey: 'veterinarianId' })
+  consultations!: MedicalConsultation[];
 }
 
 export default Veterinarian

@@ -108,7 +108,7 @@ export const updateMedicalConsultation = async (
   },
   transaction?: Transaction
 ): Promise<MedicalConsultation | null> => {
-  try {
+
     const [updatedRowsCount] = await MedicalConsultation.update(
       medicalConsultationData,
       {
@@ -125,11 +125,6 @@ export const updateMedicalConsultation = async (
       where: { id },
     });
     return updatedMedicalConsultation;
-  } catch (error: any) {
-    throw new Error(
-      "Error updating medical consultation: " + error.message
-    );
-  }
 };
 
 // Function to delete an existing medical consultation

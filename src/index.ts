@@ -20,6 +20,7 @@ import vaccineRouter from './api/resources/vaccine/vaccine.route';
 import antiparasiticRouter from './api/resources/antiparasitic/antiparasatic.route';
 import veterinarianRouter from './api/resources/veterinarian/veterinarian.route';
 import medicalConsultationsRouter from './api/resources/medicalConsultatios/medicalConsultation.route';
+import trackingsRouter from './api/resources/trackings/trackings.route';
 
 const app: Express = express(); // Create an instance of the Express application
 
@@ -56,7 +57,7 @@ app.use('/permissions', permissionsRouter); // Route requests for permission-rel
 app.use('/profile', profileRouter); // Route requests for permission-related endpoints to the permissionsRouter
 app.use('/pets', petRouter); // Route requests for permission-related endpoints to the permissionsRouter
 app.use('/veterinarians', veterinarianRouter)
-app.use('/trackings', [vaccineRouter,antiparasiticRouter,medicalConsultationsRouter]); // Route requests for permission-related endpoints to the permissionsRouter
+app.use('/trackings', [vaccineRouter,antiparasiticRouter,medicalConsultationsRouter,trackingsRouter]); // Route requests for permission-related endpoints to the permissionsRouter
 
 
 // Middleware para manejar las rutas no definidas

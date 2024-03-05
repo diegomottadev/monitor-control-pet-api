@@ -28,7 +28,7 @@ export class MedicalConsultation extends Model {
   })
   veterinarianId!: number;
 
-  @BelongsTo(() => Veterinarian)
+  @BelongsTo(() => Veterinarian, { foreignKey: 'veterinarianId' })
   veterinarian!: Veterinarian;
 
   @Column({
@@ -56,7 +56,7 @@ export class MedicalConsultation extends Model {
   })
   trackingId!: number;
 
-  @BelongsTo(() => Tracking)
+  @BelongsTo(() => Tracking,{ foreignKey: 'trackingIdId' })
   tracking!: Tracking;
 }
 export default MedicalConsultation

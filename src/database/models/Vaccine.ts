@@ -43,9 +43,6 @@ class Vaccine extends Model {
   })
   nextVaccineDate?: Date;
 
-  @BelongsTo(() => Vaccine, 'nextVaccineId')
-  nextVaccine?: Vaccine;
-
   @Column({
     type: DataType.BOOLEAN,
     allowNull: false,

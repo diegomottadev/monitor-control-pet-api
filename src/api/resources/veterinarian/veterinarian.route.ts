@@ -23,7 +23,7 @@ const handleUnknownError = (
     res.status(error.status).json({ message: error.message });
   } else if (error instanceof InfoVeterinarianInUse) {
     log.error(`Error: ${error.message}`);
-    res.status(error.status).json({ message: defaultMessage });
+    res.status(error.status).json({ message: error.message });
   } else if (error instanceof Error) {
     log.error(`Error: ${error.message}`);
     res.status(500).json({ message: defaultMessage });
