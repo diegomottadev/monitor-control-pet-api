@@ -48,7 +48,7 @@ trackingsRouter.get(
       isTransactionCommit = await trackingController.commitTransaction(
         transaction
       );
-      res.json({ data: result.rows });
+      res.json({ data: result.rows,  count: result.count});
     } catch (error) {
       if (transaction !== null && !isTransactionCommit) {
         await trackingController.rollbackTransaction(transaction);

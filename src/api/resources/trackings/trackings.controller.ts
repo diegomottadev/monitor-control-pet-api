@@ -43,7 +43,7 @@ export const getAllTrackings = async (
   pageSize: number,
   name: any,
   transaction?: Transaction
-): Promise<{ rows: Tracking[] }> => {
+): Promise<{ rows: Tracking[],  count: number }> => {
   const where: any = {
     id: { [Op.not]: null },
 };
@@ -86,9 +86,9 @@ if (name) {
 
   const { rows } = await Tracking.findAndCountAll(options);
 
-  // const trackingsCount = await Tracking.count(options);
+  const trackingsCount = await Tracking.count(options);
 
-  return { rows};
+  return { rows, count:trackingsCount};
 };
 
 // Function to search for trackings by a specific condition
