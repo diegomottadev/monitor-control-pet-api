@@ -71,7 +71,8 @@ authRouter.get('/me', async (req: Request, res: Response) => {
     }
 
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken: any = jwt.verify(token, config.jwt.secreto);
+
+    const decodedToken: any = jwt.verify(token, config.default.jwt.secreto);
     const user = await find(decodedToken.id);
     log.info(`User successfully completed authentication. The entered token is correct for the user ${user?.name} with email ${user?.email}`);
     res.json({ user });

@@ -9,6 +9,8 @@ import { Op } from "sequelize";
 import { Transaction } from "sequelize";
 import { PetNotExist } from "./pet.error";
 import Pet from "../../../database/models/Pet";
+import ExcelJS from 'exceljs';
+import fs from 'fs';
 
 const jwtAuthenticate = passport.authenticate("jwt", { session: false });
 
@@ -93,6 +95,67 @@ petRouter.get(
     }
   })
 );
+
+
+petRouter.get('/export', [jwtAuthenticate], procesarErrores(async (req: Request, res: Response) => {
+  const { page = 1, pageSize = Number.MAX_SAFE_INTEGER, name } = req.query as { page?: number; pageSize?: number; name?: string };
+
+  let where: any = { };
+
+  if (name) {
+      where = {
+          name: { [Op.like]: `%${name}%` }
+      };
+  }
+
+  const pets = await petController.getAllPets(page, pageSize, where);
+
+  const workbook = new ExcelJS.Workbook();
+  const worksheet = workbook.addWorksheet('Pets');
+
+  worksheet.columns = [
+      { header: 'ID', key: 'id', width: 10 },
+      { header: 'Name', key: 'name', width: 15 },
+      { header: 'Species', key: 'species', width: 15 },
+      { header: 'Birthdate', key: 'birthdate', width: 15 },
+      { header: 'Size', key: 'size', width: 15 },
+      { header: 'Gender', key: 'gender', width: 15 },
+      { header: 'Color', key: 'color', width: 15 },
+      { header: 'Weight', key: 'weight', width: 15 },
+      { header: 'Adopted', key: 'isAdopted', width: 15 },
+      { header: 'Description', key: 'description', width: 50 },
+
+  ];
+
+  pets.rows.forEach((pet: any) => {
+      worksheet.addRow({
+        id: pet.id,
+        name: pet.name,
+        species: pet.species,
+        breed: pet.breed,
+        birthdate: pet.birthdate,
+        size: pet.size,
+        gender: pet.gender,
+        color: pet.color,
+        description: pet.description,
+        weight: pet.weight,
+        isAdopted: pet.isAdopted ? 'Yes' : 'No'
+      });
+  });
+
+  const filename = 'pets.xlsx';
+  const filepath = `./${filename}`;
+  await workbook.xlsx.writeFile(filepath);
+
+  const filestream = fs.createReadStream(filepath);
+  res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+  filestream.pipe(res);
+
+  filestream.on('close', () => {
+      fs.unlinkSync(filepath);
+  });
+}));
 
 // Get a specific pet by ID
 petRouter.get(
