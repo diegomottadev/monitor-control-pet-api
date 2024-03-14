@@ -16,13 +16,17 @@ const petSchema = Joi.object({
   size: Joi.string().valid('small', 'medium', 'large').required(),
   gender: Joi.string().valid('male', 'female', 'other').required(),
   color: Joi.string(),
-  description: Joi.string(),
+  description: Joi.optional(),
   weight: Joi.number().positive(),
   isAdopted: Joi.boolean().required(),
   trackingId: Joi.any()
 });
 
 export const validationPet = (req: Request, res: Response, next: NextFunction) => {
+
+  const { weight } = req.body;
+  req.body.weight = parseInt(weight);
+
   const validationResult = petSchema.validate(req.body, { abortEarly: false, convert: false });
   if (validationResult.error === undefined) {
     next();
